@@ -224,3 +224,16 @@ resource "azurerm_network_profile" "netprof" {
 #  pfx_blob            = filebase64("certificate.pfx")
 #  password            = "terraform"
 #}
+
+# Despliegue de Servicios de Analisis
+resource "azurerm_analysis_services_server" "serveranalisys" {
+  name                    = "analysisservicesserver"
+  location                = azurerm_resource_group.rg.location
+  resource_group_name     = azurerm_resource_group.rg.name
+  sku                     = "S0"
+  enable_power_bi_service = true
+
+    tags = {
+    environment = "pruebaTecnica"
+  }
+}
